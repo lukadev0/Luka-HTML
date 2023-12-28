@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact</title>
+    <link rel="stylesheet" href="Contact.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <header><h2>AniManga</h2></header>
+        
+        <div class="container">
+          <div class="card" data-tilt>
+                <img src="immagini/Contact.png">
+                <h2>Luca Ciraolo</h2>
+                <p>I'm a 3rd year student at University of Messina.<br><br>Check my contact box to see my works!</p>
+                <div class="social-icons">
+                    <a href="https://github.com/lukadev0?tab=repositories" class="github"><i class='bx bxl-github'></i></a>
+                    <a href="https://www.linkedin.com/in/luca-ciraolo-6b02aa228/" class="linkedin"><i class='bx bxl-linkedin' ></i></a>
+                </div>
+
+                <div class="buttons">
+                    <button id="btnHome" class="btn-Home">Home</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            document.getElementById('btnHome').addEventListener('click', function() {
+                window.location.href = 'Homepage.html';  //da sistemare
+            });
+        </script>
+
+        <script src="immagini/vanilla-tilt.js"></script>
+</body>
+</html>
