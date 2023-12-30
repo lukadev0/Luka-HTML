@@ -41,5 +41,5 @@
     $stmt->closeCursor();
 
 
-    header("Location: After_Register.php");
+    header("Location: Login.php");
 ?>
