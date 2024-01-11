@@ -43,16 +43,13 @@ function handlePutCounterUpdate($table, $key, $pdo) {
     if (isset($input['post_count'])) {
         // Estrai il valore corrente del post_count dal database
         $currentPostCount = getCurrentPostCount($table, $key, $pdo);
-
-        // Verifica se l'utente sta aggiungendo o rimuovendo un post
-        $changeValue = $input['post_count'] > $currentPostCount ? 1 : -1;
-
-        // Calcola il nuovo contatore
-        $newPostCount = $currentPostCount + $changeValue;
-
+    
+        // Aggiungi il valore del campo post_count all'attuale contatore
+        $newPostCount = $currentPostCount + $input['post_count'];
+    
         // Aggiorna il valore del post_count nel database
         updatePostCount($table, $key, $newPostCount, $pdo);
-
+    
         // Rispondi con successo
         $response = array('status' => 'success', 'message' => 'Post count updated successfully');
         header('Content-Type: application/json');
