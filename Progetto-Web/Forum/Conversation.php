@@ -14,11 +14,11 @@ if (isset($_SESSION['user_id'])) {
 }
 
 if (isset($_GET['username'])) {
-    $_SESSION['username'] = $_GET['username'];
+    $username = $_GET['username'];
 }
 
-if (isset($_SESSION['username'])) {
-    $selectedUsername = $_SESSION['username'];
+if (isset($username)) {
+    $selectedUsername = $username;
     $getPostQuery = "SELECT * FROM post WHERE username = :username ORDER BY data_creazione DESC LIMIT 1";
     $getPostStmt = $connection->prepare($getPostQuery);
     $getPostStmt->bindParam(':username', $selectedUsername, PDO::PARAM_STR);
@@ -143,7 +143,7 @@ $allReplies = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: array();
 
         <div class="panel panel-default" style="margin-top: 50px">
             <div class="panel-body">
-                <h3>Question of <?= htmlspecialchars($_SESSION['username']) ?></h3>
+                <h3>Question of <?= htmlspecialchars($username) ?></h3>
                 <div class="post-box">
                     <p><strong>Username:</strong> <?= htmlspecialchars($selectedPost['username']) ?></p>
                     <p><strong>Posts:</strong> <?= htmlspecialchars($selectedPost['posts']) ?></p>
