@@ -66,6 +66,23 @@ if (isset($_GET['success']) && $_GET['success'] === 'true') {
     exit();
 }
 
+if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST['remove'])) {
+    $replyIdToRemove = $_POST['post_id'];
+
+    $removeReplyQuery = "DELETE FROM commenti WHERE id = :id AND utente_id = :utente_id";
+    $removeReplyStmt = $connection->prepare($removeReplyQuery);
+    $removeReplyStmt->bindParam(':id', $replyIdToRemove, PDO::PARAM_INT);
+    $removeReplyStmt->bindParam(':utente_id', $id_utente, PDO::PARAM_INT);
+    $removeReplyStmt->execute();
+
+    $updateReplyCountQuery = "UPDATE utenti SET reply_count = GREATEST(reply_count - 1, 0) WHERE id = :user_id";
+    $updateReplyCountStmt = $connection->prepare($updateReplyCountQuery);
+    $updateReplyCountStmt->bindParam(':user_id', $id_utente, PDO::PARAM_INT);
+    $updateReplyCountStmt->execute();
+
+    
+}
+
 function getUsernameById($userId, $replies) {
     foreach ($replies as $reply) {
         if ($reply['id'] == $userId) {
@@ -85,12 +102,14 @@ function getMessageById($parentId, $replies) {
 }
 
 
-$query = "SELECT * FROM commenti WHERE post_id = :post_id ORDER BY data_creazione ASC";
+$query = "SELECT * FROM commenti WHERE post_id = :post_id ORDER BY data_creazione DESC";
 $stmt = $connection->prepare($query);
 $stmt->bindParam(':post_id', $post_id, PDO::PARAM_INT);
 $stmt->execute();
 
 $allReplies = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: array();
+
+
 ?>
 
 <!DOCTYPE html>
