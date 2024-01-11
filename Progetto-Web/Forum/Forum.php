@@ -4,25 +4,24 @@ session_start();
 $connection = require __DIR__ . "/../database_connection.php";
 
 if (isset($_SESSION['user_id'])) {
-    $id_utente = $_SESSION['user_id'];
+    
     $query = "SELECT * FROM utenti WHERE id = :id_utente";
     $stmt = $connection->prepare($query);
-    $stmt->bindParam(':id_utente', $id_utente, PDO::PARAM_INT);
+    $stmt->bindParam(':id_utente', $_SESSION['user_id'], PDO::PARAM_INT);
     $stmt->execute();
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     $username = $result['username'];
+
+
+    $currentTime = date("Y-m-d H:i:s");
+    $id_utente = $result['id'];
+
+
+    $query = "SELECT * FROM post ORDER BY data_creazione DESC";
+    $stmt = $connection->prepare($query);
+    $stmt->execute();
+    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: array();
 }
-
-$_SESSION['username'] = $username;
-$currentTime = date("Y-m-d H:i:s");
-
-
-
-$query = "SELECT * FROM post ORDER BY data_creazione DESC";
-$stmt = $connection->prepare($query);
-$stmt->execute();
-$posts = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: array();
-
 ?>
 
 <!DOCTYPE html>
@@ -56,7 +55,7 @@ $posts = $stmt->fetchAll(PDO::FETCH_ASSOC) ?: array();
                 <form name="frm" onsubmit="return CreatePost();">
                     <input type="hidden" id="commentid" name="Pcommentid" value="0">
                     <div class="form-group">
-                        <label for="usr">Welcome <span id="welcomeUsername"><?= htmlspecialchars($_SESSION['username']) ?></span>, write in the box down below to share your thoughts! <hr></label>
+                        <label for="usr">Welcome <span id="welcomeUsername"><?= htmlspecialchars($username) ?></span>, write in the box down below to share your thoughts! <hr></label>
                     </div>
                     <div class="form-group">
                         <label for="comment">Write your question:</label>
