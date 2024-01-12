@@ -1,0 +1,621 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: url(Background-Forum.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: transparent;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+    user-select: none;
+    margin-top: 3px;
+}
+
+h2 {
+    font-size: 1.5em;
+    color: #fff;
+    user-select: none;
+    margin-left: -50px;
+    margin-top: -13px;
+}
+
+.box{
+    height: 45px;
+    display: flex;
+    cursor: pointer;
+    padding: 10px 20px;
+    background: white;
+    border-radius: 30px;
+    align-items: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    margin-right: -50px;
+}
+
+.box:hover input{
+    width: 300px;
+
+}
+
+.box input{
+    width: 0;
+    outline: none;
+    border: none;
+    font-weight: 500;
+    transition: 0.8s;
+    background: transparent;
+    cursor: pointer;
+
+}
+
+.bpx a .fas{
+    color: black;
+    font-size: 18px;
+
+}
+
+
+.container{
+    width: 50%;
+    height: 70%;
+    margin: auto;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.panel{
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: transparent;
+    border: 6px solid rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(1px);
+}
+
+.panel-body {
+    padding: 20px;
+    line-height: 45px;
+    color: white;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.btn-primary {
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background-color: #2980b9;
+}
+
+.post-box {
+    border: 2px solid #ddd;
+    padding: 10px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    position: relative;
+    background: rgba(44, 40, 40, 0.4); /* Sfondo con sfocatura */
+    
+    
+}
+
+.post-box strong{
+    color: #fda371;
+}
+
+.reply-button {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.reply-button:hover {
+    background-color: #2980b9;
+}
+
+
+#ReplyModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    user-select: none;
+}
+
+
+.modal-content {
+    background-color: white;
+    padding: 10px;
+    border-radius: 10px;
+    animation: slideIn 0.3s ease-out;
+    width: 35%;
+    height: 44%;
+    margin: 40px 494px ;
+    align-items: center;
+    user-select: none;
+
+}
+
+.modal-title{
+    margin-bottom: 10px;
+    justify-content:space-around;
+    margin-top: -33px;
+    user-select: none;
+}
+
+.form-reply{
+    width: 505px; 
+    height: 130px;
+    max-width: 505px; 
+    max-height: 130px; 
+    min-width: 505px; 
+    min-height: 130px; 
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    user-select: none;
+    margin-top: 10px;
+
+    
+}
+
+label {
+    font-weight: 30px bold;
+    color: black;
+}
+
+.close {
+    position: relative;
+    left: 494px;
+    font-size: 26px;
+    color: #888;
+    cursor: pointer;
+    user-select: none;
+    margin-top: 5px;
+}
+
+.close:active{
+    transform: scale(0.96);
+}
+
+.close:hover {
+    opacity: 1;
+    background: white;
+    color: black;
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.reply-button {
+    background-color: rgb(52, 152, 219);
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    user-select: none;
+}
+
+.reply-button:hover {
+    background-color: #2980b9;
+}
+
+.remove-button {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 530px;
+    
+}
+
+.remove-button:hover{
+    background-color: #cc0000;
+}
+
+.post-box .replyto{
+    color: #e886c7;
+}
+
+@media (max-width: 1441px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        margin-top: 10px;
+    }
+
+    .box {
+        height: 45px;
+        margin-top: 10px;
+        margin-right: -60px;
+    }
+
+    .box:hover input {
+        width: 300px;
+    }
+
+    h2 {
+       margin-top: 5px;
+       margin-left: -70px;
+    }
+
+    
+    .container {
+        width: 100%;
+        margin-top: 90px;
+    }
+
+    .panel {
+        width: 70%;
+        margin-left: 240px;
+        
+    }
+
+    .form-control {
+        width: 950px; 
+        height: 159px;
+        max-width: 950px; 
+        max-height: 200px; 
+        min-width: 950px; 
+        min-height: 159px; 
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        user-select: none;
+    }
+
+    .remove-button {
+        margin-left: 770px;
+    }
+}
+
+@media (max-width: 1025px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        margin-top: 10px;
+    }
+
+    .box {
+        height: 45px;
+        margin-top: 10px;
+        margin-right: -60px;
+    }
+
+    .box:hover input {
+        width: 600px;
+    }
+
+    h2 {
+       margin-top: 10px;
+       margin-left: -70px;
+    }
+
+
+    .container {
+        width: 90%;
+        margin-top: 80px;
+    }
+
+    .panel {
+        width: 90%;
+        margin-left: 50px;
+    }
+
+    .form-control {
+        width: 775px; 
+        height: 159px;
+        max-width: 775px; 
+        max-height: 200px; 
+        min-width: 775px; 
+        min-height: 159px; 
+        padding: 10px;
+        border: 1px solid #cccccc;
+        border-radius: 5px;
+        user-select: none;
+    }
+
+    .remove-button {
+        margin-left: 600px;
+    }
+}
+
+@media (max-width: 769px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        margin-top: 10px;
+    }
+
+    .box {
+        height: 45px;
+        padding: 10px 20px;
+        margin-right: -70px;
+    }
+
+    .box:hover input {
+        width: 600px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+        margin-left: -70px;
+    }
+
+    .container {
+        width: 90%;
+        margin-top: 80px;
+    }
+
+    .panel {
+        width: 90%;
+        margin-left: 50px;
+
+    }
+
+    .form-control {
+        width: 570px;
+        max-width: 570px;
+        min-width: 570px;
+        height: 159px;
+        max-height: 200px;
+        min-height: 159px;
+        padding: 10px;
+    }
+
+    .remove-button {
+        margin-left: 390px;
+    }
+}
+
+@media (max-width: 426px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        padding: 10px 20px;
+        margin-top: 5px;
+    }
+
+    .box {
+        height: 35px;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+
+    .box:hover input {
+        width: 170px;
+    }
+
+    .bpx a .fas {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: medium;
+        margin-left: 3px;
+        margin-top: 10px;
+    }
+
+    
+    .container {
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    .panel {
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    .form-control {
+        width: 315px;
+        max-width: 315px;
+        min-width: 315px;
+        height: 120px;
+        max-height: 120px;
+        min-height: 120px;
+    }
+
+    .remove-button {
+        margin-left: 130px;
+    }
+}
+
+
+
+@media (max-width: 376px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        padding: 10px 20px;
+        margin-top: 5px;
+    }
+
+    .box {
+        height: 35px;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+
+    .box:hover input {
+        width: 110px;
+    }
+
+    .bpx a .fas {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: medium;
+        margin-left: 3px;
+        margin-top: 10px;
+    }
+
+    
+    .container {
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    .panel {
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    .form-control {
+        width: 270px;
+        max-width: 270px;
+        min-width: 270px;
+        height: 120px;
+        max-height: 120px;
+        min-height: 120px;
+    }
+
+    .remove-button {
+        margin-left: 90px;
+    }
+}
+
+
+
+@media (max-width: 321px) {
+    body {
+        background: url(Background-Forum.png) no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    header {
+        padding: 10px 20px;
+        margin-top: 5px;
+    }
+
+    .box {
+        height: 35px;
+        padding: 5px 10px;
+        margin-right: -5px;
+    }
+
+    .box:hover input {
+        width: 110px;
+    }
+
+    .bpx a .fas {
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: medium;
+        margin-left: 3px;
+        margin-top: 10px;
+    }
+
+    
+    .container {
+        width: 90%;
+        margin-top: 50px;
+    }
+
+    .panel {
+        width: 95%;
+        margin-left: 5px;
+    }
+
+    .form-control {
+        width: 220px;
+        max-width: 220px;
+        min-width: 220px;
+        height: 120px;
+        max-height: 120px;
+        min-height: 120px;
+    }
+
+    .remove-button {
+        margin-left: 45px;
+    }
+}
